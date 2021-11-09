@@ -7,10 +7,7 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.Keyboard
 import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 
 import javax.validation.OverridesAttribute;
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.*;
 
 
 public class MyAutoTelegaBot extends TelegramLongPollingBot {
@@ -28,140 +25,53 @@ public class MyAutoTelegaBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        if (update.hasMessage() && update.getMessage().hasText()) {
-            SendMessage message = new SendMessage(); // Создайте объект SendMessage с обязательными полями
-            message.setChatId(update.getMessage().getChatId().toString());
-            message.setText(logicBots.BotResponse(update.getMessage().getText()));
+        /* ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
+        keyboardMarkup.setOneTimeKeyboard(false);
+        keyboardMarkup.setResizeKeyboard(true);
 
+
+            KeyboardButton k1 = new KeyboardButton("Привет");
+            KeyboardButton k2 = new KeyboardButton("работает");
+            KeyboardButton k3 = new KeyboardButton("когда");
+            ArrayList<KeyboardRow> kbr = new ArrayList<>();
+            KeyboardRow kbr1 = new KeyboardRow();
+            KeyboardRow kbr2 = new KeyboardRow();
+            KeyboardRow kbr3 = new KeyboardRow();
+            kbr1.add(k1) ;
+            kbr2.add(k2);
+            kbr3.add(k3);
+            kbr.add(kbr1);
+            kbr.add(kbr2);
+            kbr.add(kbr3);
+
+            keyboardMarkup.setKeyboard(kbr);
+             if (update.hasMessage() && !update.getMessage().hasText()) {
+            SendMessage message = new SendMessage(); // Создайте объект SendMessage с обязательными полями
+            // message.setChatId(update.getMessage().getChatId().toString());
+            //message.setText(logicBots.BotResponse(update.getMessage().getText()));
+            message.setReplyMarkup(keyboardMarkup);
             try {
                 execute(message); // Способ вызова для отправки сообщения
             } catch (TelegramApiException e) {
                 e.printStackTrace();
             }
+            kbr.clear();
+             } */
 
-            KeyboardButton kb1 = new KeyboardButton("Вопрос");
-            KeyboardButton kb2 = new KeyboardButton("Ответ");
-            List <KeyboardRow> kb = new List<KeyboardRow>() {
-                @Override
-                public int size() {
-                    return 0;
-                }
+        if (update.hasMessage() && update.getMessage().hasText() ) {
+            SendMessage message = new SendMessage(); // Создайте объект SendMessage с обязательными полями
+            message.setChatId(update.getMessage().getChatId().toString());
+            message.setText(logicBots.BotResponse(update.getMessage().getText()));
 
-                @Override
-                public boolean isEmpty() {
-                    return false;
-                }
+            try {
+              execute(message); // Способ вызова для отправки сообщения
+            } catch (TelegramApiException e) {
+              e.printStackTrace();
+            }
 
-                @Override
-                public boolean contains(Object o) {
-                    return false;
-                }
+             //KeyboardButton kb1 = new KeyboardButton("Вопрос");
+             //KeyboardButton kb2 = new KeyboardButton("Ответ");
 
-                @Override
-                public Iterator<KeyboardRow> iterator() {
-                    return null;
-                }
-
-                @Override
-                public Object[] toArray() {
-                    return new Object[0];
-                }
-
-                @Override
-                public <T> T[] toArray(T[] a) {
-                    return null;
-                }
-
-                @Override
-                public boolean add(KeyboardRow keyboardButtons) {
-                    return false;
-                }
-
-                @Override
-                public boolean remove(Object o) {
-                    return false;
-                }
-
-                @Override
-                public boolean containsAll(Collection<?> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean addAll(Collection<? extends KeyboardRow> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean addAll(int index, Collection<? extends KeyboardRow> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean removeAll(Collection<?> c) {
-                    return false;
-                }
-
-                @Override
-                public boolean retainAll(Collection<?> c) {
-                    return false;
-                }
-
-                @Override
-                public void clear() {
-
-                }
-
-                @Override
-                public KeyboardRow get(int index) {
-                    return null;
-                }
-
-                @Override
-                public KeyboardRow set(int index, KeyboardRow element) {
-                    return null;
-                }
-
-                @Override
-                public void add(int index, KeyboardRow element) {
-
-                }
-
-                @Override
-                public KeyboardRow remove(int index) {
-                    return null;
-                }
-
-                @Override
-                public int indexOf(Object o) {
-                    return 0;
-                }
-
-                @Override
-                public int lastIndexOf(Object o) {
-                    return 0;
-                }
-
-                @Override
-                public ListIterator<KeyboardRow> listIterator() {
-                    return null;
-                }
-
-                @Override
-                public ListIterator<KeyboardRow> listIterator(int index) {
-                    return null;
-                }
-
-                @Override
-                public List<KeyboardRow> subList(int fromIndex, int toIndex) {
-                    return null;
-                }
-            };
-            //kb[0] = kb1;
-            //kb[1] = kb2;
-
-            ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-            //keyboardMarkup.setKeyboard(kb);
 
         }
     }
