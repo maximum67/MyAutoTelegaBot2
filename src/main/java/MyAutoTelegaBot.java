@@ -15,8 +15,6 @@ import java.util.ListIterator;
 
 public class MyAutoTelegaBot extends TelegramLongPollingBot {
 
-
-
     @Override
     public String getBotUsername() {
         return "MyAutoTelegaBot";
@@ -24,7 +22,8 @@ public class MyAutoTelegaBot extends TelegramLongPollingBot {
 
     @Override
     public String getBotToken() {
-        return "";
+        BotKey botKeyToken = new BotKey();
+        return botKeyToken.getKey();
     }
 
     @Override
@@ -157,12 +156,12 @@ public class MyAutoTelegaBot extends TelegramLongPollingBot {
                 public List<KeyboardRow> subList(int fromIndex, int toIndex) {
                     return null;
                 }
-            }KeyboardRow;
-            kb[0] = kb1;
-            kb[1] = kb2;
+            };
+            //kb[0] = kb1;
+            //kb[1] = kb2;
 
             ReplyKeyboardMarkup keyboardMarkup = new ReplyKeyboardMarkup();
-            keyboardMarkup.setKeyboard(kb);
+            //keyboardMarkup.setKeyboard(kb);
 
         }
     }
